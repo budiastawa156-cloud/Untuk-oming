@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesan Spesial Untukmu ❤️</title>
+    <!-- Google Fonts: Poppins, Playfair Display, & Great Vibes -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@1,600;1,700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            color: #fff;
+            position: relative;
+            background-color: #0f1026;
+        }
+
+        /* BACKGROUND 3D BERGERAK */
+        .bg-container {
+            position: fixed;
+            top: -5%;
+            left: -5%;
+            width: 110%;
+            height: 110%;
+            background: url('cinta.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            animation: moveBg 20s ease-in-out infinite alternate;
+        }
+
+        /* LAPISAN OVERLAY REDUP */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(30, 10, 20, 0.45), rgba(50, 15, 30, 0.55));
+            z-index: 2;
+        }
+
+        /* BINGKAI GLASSMORPHISM MELAYANG */
+        .bg-glow {
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 18px;
+            transform: rotate(30deg);
+            pointer-events: none;
+            animation: floatGlow 6s ease-in-out infinite alternate;
+            z-index: 3;
+        }
+        .g1 { top: 12%; left: 8%; animation-delay: 0s; }
+        .g2 { top: 8%; right: 12%; width: 45px; height: 45px; animation-delay: 1.5s; }
+        .g3 { bottom: 40%; right: 10%; animation-delay: 3s; }
+        .g4 { bottom: 25%; left: 10%; width: 55px; height: 55px; animation-delay: 4.5s; }
+
+        .screen {
+            position: relative;
+            width: 700%;
+            max-width: 400px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            z-index: 4;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* KOTAK GLASSMORPHISM TRANSPARAN BERKILAU */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            border-radius: 24px;
+            padding: 28px 22px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+            max-height: 88vh;
+            overflow-y: auto;
+        }
+
+        .glass-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+          justify-content: center;
+          align-items:center
+        }
+
+        /* INPUT NAMA */
+        .input-name {
+            width: 100%;
+            padding: 12px 18px;
+            margin-top: 18px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .input-name::placeholder {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .input-name:focus {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: #ffffff;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+        }
+
+        /* TOMBOL UTAMA */
+        .btn-action {
+            background: linear-gradient(135deg, #ff4757, #c0392b);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+            margin-top: 20px;
+            transition: transform 0.2s, background 0.3s;
+            width: 100%;
+        }
+
+        .btn-action:hover {
+            transform: scale(1.03);
+        }
+
+        .btn-action:active {
+            transform: scale(0.95);
+        }
+
+        /* HALAMAN AMPLOP INTERAKTIF */
+        .envelope-box {
+            cursor: pointer;
+            margin: 20px auto;
+            transition: transform 0.3s ease;
+            animation: pulseEnvelope 2s infinite alternate;
+        }
+
+        .envelope-icon {
+            font-size: 75px;
+            filter: drop-shadow(0 0 15px rgba(255, 71, 87, 0.7));
+        }
+
+        .envelope-text {
+            font-size: 15px;
+            color: #ffe4e6;
+            margin-top: 15px;
+            line-height: 1.6;
+            font-style: italic;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* GIF LUCU DI ATAS SURAT */
+        .avatar-gif-box {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            padding: 5px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .avatar-gif-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* ELEMEN TEKS SURAT ROMANTIS */
+        .text-typing {
+            font-size: 14px;
+            line-height: 1.7;
+            white-space: pre-line;
+            font-weight: 400;
+            color: #ffffff;
+            text-align: left;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .aesthetic-start {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-style: italic;
+            font-weight: 700;
+            color: #ffe4e6;
+            display: block;
+            margin-bottom: 12px;
+            text-align: left;
+            text-shadow: 0 2px 10px rgba(255, 228, 230, 0.4);
+        }
+
+        .aesthetic-end {
+            font-family: 'Great Vibes', cursive;
+            font-size: 28px;
+            color: #fbcfe8;
+            display: block;
+            margin-top: 18px;
+            line-height: 1.3;
+            text-align: left;
+            text-shadow: 0 2px 10px rgba(251, 207, 232, 0.5);
+        }
+
+        .error-msg {
+            color: #ff6b6b;
+            font-size: 12px;
+            margin-top: 8px;
+            display: none;
+            font-weight: 600;
+        }
+
+        /* GALERI FOTO POLAROID GLASS */
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            margin-top: 20px;
+        }
+
+        .photo-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 18px;
+            padding: 14px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .photo-card img {
+            width: 65%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .photo-card .quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            color: #fbcfe8;
+            margin-top: 12px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .photo-card .sub-quote {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 4px;
+        }
+
+        /* HALAMAN TERAKHIR & ANIMASI TULISAN BERGILIRAN */
+        .final-message-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 180px;
+        }
+
+        .animate-love-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 38px;
+            color: #fbcfe8;
+            text-shadow: 0 0 15px rgba(251, 207, 232, 0.8), 0 0 25px rgba(255, 71, 87, 0.5);
+            visibility: hidden;
+            line-height: 1.3;
+            transition: opacity 0.8s ease-in-out;
+            opacity: 1;
+        }
+
+        .animate-love-text.fade-out {
+            opacity: 0;
+        }
+
+        .typed-cursor {
+            font-size: 32px;
+            color: white;
+            opacity: 1;
+            animation: blink 0.7s infinite;
+        }
+
+        /* KEYFRAMES ANIMASI */
+        @keyframes moveBg {
+            0% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.08) translate(-12px, -8px); }
+            100% { transform: scale(1.03) translate(12px, 8px); }
+        }
+        @keyframes floatGlow {
+            0% { transform: rotate(30deg) translateY(0); }
+            100% { transform: rotate(45deg) translateY(-15px); }
+        }
+        @keyframes pulseEnvelope {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BACKGROUND 3D BERGERAK -->
+    <div class="bg-container"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="bg-glow g1"></div>
+    <div class="bg-glow g2"></div>
+    <div class="bg-glow g3"></div>
+    <div class="bg-glow g4"></div>
+
+    <!-- AUDIO MUSIK BACKGROUND -->
+    <audio id="backSound" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- SCREEN 1: INPUT NAMA -->
+    <div id="sc1" class="screen">
+        <div class="glass-card">
+            <h3>Siapa Namamu? ✨</h3>
+            <p style="font-size: 12px; opacity: 0.85; margin-top: 5px;">Cantik, masukkan namamu untuk membuka pesan ini 🤭</p>
+            
+            <input type="text" id="nameInput" class="input-name" placeholder="Ketik nama di sini..." autocomplete="off">
+            <p id="errorTxt" class="error-msg">Isi nama kamu dulu yaa! 😊</p>
+            
+            <button class="btn-action" onclick="checkKeyword()">Buka Pesan 🔓</button>
+        </div>
+    </div>
+
+    <!-- SCREEN 1.5: HALAMAN AMPLOP -->
+    <div id="sc-envelope" class="screen hidden">
+        <div class="glass-card">
+            <h3>Ada Pesan Spesial! 💌</h3>
+            
+            <div class="envelope-box" onclick="openSuratFromEnvelope()">
+                <div class="envelope-icon">💌</div>
+                <p class="envelope-text">
+                    "Ungkapan tulus dari dasar hatiku... <br>
+                    <strong>Sentuh amplop ini</strong> untuk membukanya, yaa ❤️"
+                </p>
+            </div>
+
+            <button class="btn-action" onclick="openSuratFromEnvelope()">Buka Surat Sekarang ✨</button>
+        </div>
+    </div>
+
+    <!-- SCREEN 2: ISIAN SURAT CINTA -->
+    <div id="sc2" class="screen hidden">
+        <div class="glass-card">
+            <div class="avatar-gif-box">
+                <img src="cute.gif" alt="Panda Cute">
+            </div>
+
+            <div id="messageContent">
+                <span id="textStart" class="aesthetic-start"></span>
+                <div id="textBody" class="text-typing"></div>
+                <span id="textEnd" class="aesthetic-end"></span>
+            </div>
+
+            <button id="btnNext" class="btn-action hidden" onclick="goToGallery()">Lanjut ➔</button>
+        </div>
+    </div>
+
+    <!-- SCREEN 3: FOTO & KATA-KATA ROMANTIS -->
+    <div id="sc3" class="screen hidden">
+        <div class="glass-card">
+            <h3 style="color: #ffe4e6;">Moment Terindah🥰</h3>
+            <p style="font-size: 12px; opacity: 0.85;">Setiap detik bersamamu adalah momen terindah dalam hidupku.</p>
+
+            <div class="gallery">
+                <!-- Foto 1 -->
+                <div class="photo-card">
+                    <img src="image1.jpg" alt="Momen Indah 1">
+                    <p class="quote">"Di antara miliaran manusia di dunia, menemukanmu adalah takdir terbaikku."</p>
+                    <p class="sub-quote">Terima kasih sudah memilih berjalan bersamaku ✨</p>
+                </div>
+
+                <!-- Foto 2 -->
+                <div class="photo-card">
+                    <img src="image2.jpg" alt="Momen Indah 2">
+                    <p class="quote">"Senyummu adalah penawar dari segala lelahku, dan hadirmu adalah bahagiaku."</p>
+                    <p class="sub-quote">Aku ingin terus merawat bahagia ini bersamamu, selamanya 💖</p>
+                </div>
+            </div>
+
+            <!-- TOMBOL KE HALAMAN TERAKHIR -->
+            <button class="btn-action" onclick="goToLastPage()" style="margin-top: 25px;">Lanjut ❤️</button>
+        </div>
+    </div>
+
+    <!-- SCREEN 4: HALAMAN TERAKHIR (ANIMASI TULISAN AESTHETIC BERGILIRAN) -->
+    <div id="sc4" class="screen hidden">
+        <div class="glass-card">
+            <div class="avatar-gif-box">
+                <img src="image3.jpg" alt="Her image">
+            </div>
+            
+            <div class="final-message-container">
+                <div id="loveText" class="animate-love-text"></div>
+            </div>
+
+            <p style="font-size: 11px; opacity: 0.6; margin-top: 15px;">Semoga kamu suka kejutan kecil ini 🤭</p>
+        </div>
+    </div>
+
+    <script>
+        const musik = document.getElementById('backSound');
+        let namaPenerimaGlobal = "Oming";
+
+        // TEKS SURAT ROMANTIS
+        const isiBadanSurat = `.. I love you more than words can say ❤️`
+
+        const salamAkhir = 'Sayang, semangat kerjanya yaa Kalau hari ini terasa berat, ingat ada seseorang yang selalu menunggu kamu pulang dan selalu mendoakanmu. Jangan menyerah, kamu hebat dan kamu pasti bisa melewati semuanya. Aku sayang kamu, jaga diri baik-baik ya.lopyou oming🤍'
+          "Forever and always, you're my favorite person  🤍";
+
+        // DAFTAR KALIMAT YANG AKAN MUNJUL BERGILIRAN DI HALAMAN TERAKHIR
+        const pesanBergiliran = [
+            "Semangat Sayanggg ",
+            "I Love You Sayang 🤍"
+        ];
+
+        // PROSES CEK NAMA
+        function checkKeyword() {
+            const inputVal = document.getElementById('nameInput').value.trim();
+            const errorTxt = document.getElementById('errorTxt');
+
+            if (inputVal === "oming") {
+                errorTxt.innerText = "Isi nama kamu dulu yaa! 😊";
+                errorTxt.style.display = "block";
+                return;
+            }
+
+            // Putar Musik
+            musik.play().catch(() => console.log("Musik diputar."));
+
+            errorTxt.style.display = "none";
+            namaPenerimaGlobal = inputVal.charAt(0).toUpperCase() + inputVal.slice(1);
+
+            document.getElementById('sc1').classList.add('hidden');
+            document.getElementById('sc-envelope').classList.remove('hidden');
+        }
+
+        function openSuratFromEnvelope() {
+            document.getElementById('sc-envelope').classList.add('hidden');
+            document.getElementById('sc2').classList.remove('hidden');
+
+            startSuratSequence(namaPenerimaGlobal);
+        }
+
+        function startSuratSequence(namaUser) {
+            document.getElementById('textStart').innerText = `Untuk ${namaUser} Sayang ❤️`;
+
+            typeWriter(isiBadanSurat, 'textBody', 35, () => {
+                document.getElementById('textEnd').innerText = salamAkhir;
+                document.getElementById('btnNext').classList.remove('hidden');
+            });
+        }
+
+        function typeWriter(teks, elemenId, kecepatan, callback) {
+            let index = 0;
+            const target = document.getElementById(elemenId);
+            target.innerHTML = "";
+            
+            function jalan() {
+                if (index < teks.length) {
+                    target.innerHTML += teks.charAt(index);
+                    index++;
+                    setTimeout(jalan, kecepatan);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            jalan();
+        }
+
+        function goToGallery() {
+            document.getElementById('sc2').classList.add('hidden');
+            document.getElementById('sc3').classList.remove('hidden');
+        }
+
+        // NAVIGASI KE HALAMAN TERAKHIR
+        function goToLastPage() {
+            document.getElementById('sc3').classList.add('hidden');
+            document.getElementById('sc4').classList.remove('hidden');
+            
+            // Memulai animasi bergiliran dari indeks ke-0
+            playSequenceAnimation(0);
+        }
+
+        // FUNGSI ANIMASI KETIK KALIMAT BERGILIRAN
+        function playSequenceAnimation(msgIndex) {
+            if (msgIndex >= pesanBergiliran.length) return;
+
+            const loveTextEl = document.getElementById('loveText');
+            loveTextEl.style.visibility = 'visible';
+            loveTextEl.classList.remove('fade-out');
+            loveTextEl.innerHTML = '<span class="typed-cursor">|</span>';
+
+            const teksSekarang = pesanBergiliran[msgIndex];
+            let index = 0;
+            const kecepatanNgetik = 120; // Kecepatan ketik (milidetik)
+
+            function ketik() {
+                if (index < teksSekarang.length) {
+                    const currentText = teksSekarang.substring(0, index + 1);
+                    loveTextEl.innerHTML = currentText + '<span class="typed-cursor">|</span>';
+                    index++;
+                    setTimeout(ketik, kecepatanNgetik);
+                } else {
+                    // Selesai ngetik kalimat ini
+                    loveTextEl.innerHTML = teksSekarang + '<span class="typed-cursor">|</span>';
+
+                    // Jika ini BUKAN kalimat terakhir, beri jeda lalu fade out & ganti ke kalimat berikutnya
+                    if (msgIndex < pesanBergiliran.length - 1) {
+                        setTimeout(() => {
+                            // Efek Fade Out halus
+                            loveTextEl.classList.add('fade-out');
+                            
+                            // Setelah efek fade out selesai (0.8 detik), ketik kalimat berikutnya
+                            setTimeout(() => {
+                                playSequenceAnimation(msgIndex + 1);
+                            }, 800);
+                        }, 2200); // Durasi tampil kalimat pertama (2.2 detik) sebelum hilang
+                    }
+                }
+            }
+
+            setTimeout(ketik, 300);
+        }
+    </script>
+</body>
+</html>
