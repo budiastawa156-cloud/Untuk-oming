@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesan Spesial Untukmu ❤️</title>
-    <!-- Google Fonts: Poppins, Playfair Display, & Great Vibes -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@1,600;1,700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Times New Roman / Serif Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -25,16 +25,14 @@
             background-color: #0f1026;
         }
 
-        /* BACKGROUND 3D BERGERAK */
+        /* BACKGROUND BERGERAK */
         .bg-container {
             position: fixed;
             top: -5%;
             left: -5%;
             width: 110%;
             height: 110%;
-            background: url('cinta.jpg');
-            background-size: cover;
-            background-position: center;
+            background: url('cinta.jpg') center/cover no-repeat;
             z-index: 1;
             animation: moveBg 20s ease-in-out infinite alternate;
         }
@@ -46,11 +44,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(30, 10, 20, 0.45), rgba(50, 15, 30, 0.55));
+            background: linear-gradient(to bottom, rgba(30, 10, 20, 0.55), rgba(50, 15, 30, 0.65));
             z-index: 2;
         }
 
-        /* BINGKAI GLASSMORPHISM MELAYANG */
+        /* ORNAMEN GLOW MELAYANG */
         .bg-glow {
             position: fixed;
             width: 70px;
@@ -69,14 +67,14 @@
 
         .screen {
             position: relative;
-            width: 700%;
-            max-width: 400px;
+            width: 100%;
+            max-width: 420px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 24px;
+            padding: 20px;
             z-index: 4;
         }
 
@@ -84,7 +82,7 @@
             display: none !important;
         }
 
-        /* KOTAK GLASSMORPHISM TRANSPARAN BERKILAU */
+        /* KOTAK GLASSMORPHISM TRANSPARAN */
         .glass-card {
             background: rgba(255, 255, 255, 0.18);
             backdrop-filter: blur(18px);
@@ -95,7 +93,7 @@
             width: 100%;
             text-align: center;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
-            max-height: 88vh;
+            max-height: 90vh;
             overflow-y: auto;
         }
 
@@ -105,8 +103,6 @@
             letter-spacing: 0.5px;
             margin-bottom: 8px;
             text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-          justify-content: center;
-          align-items:center
         }
 
         /* INPUT NAMA */
@@ -180,17 +176,17 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* GIF LUCU DI ATAS SURAT */
+        /* AVATAR GIF */
         .avatar-gif-box {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             margin: 0 auto 15px auto;
             display: flex;
             justify-content: center;
             align-items: center;
             background: rgba(255, 255, 255, 0.25);
             border-radius: 50%;
-            padding: 5px;
+            padding: 4px;
             border: 2px solid rgba(255, 255, 255, 0.4);
         }
 
@@ -201,38 +197,40 @@
             border-radius: 50%;
         }
 
-        /* ELEMEN TEKS SURAT ROMANTIS */
+        /* TEKS SURAT & FONT NORMAL (TIMES NEW ROMAN / SERIF) */
         .text-typing {
-            font-size: 14px;
-            line-height: 1.7;
+            font-family: 'Tinos', 'Times New Roman', Times, serif;
+            font-size: 16px;
+            line-height: 1.8;
             white-space: pre-line;
-            font-weight: 400;
             color: #ffffff;
-            text-align: left;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            text-align: justify;
+            text-justify: inter-word;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
         }
 
         .aesthetic-start {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            font-style: italic;
+            font-family: 'Tinos', 'Times New Roman', Times, serif;
+            font-size: 20px;
             font-weight: 700;
             color: #ffe4e6;
             display: block;
             margin-bottom: 12px;
             text-align: left;
-            text-shadow: 0 2px 10px rgba(255, 228, 230, 0.4);
+            text-shadow: 0 2px 8px rgba(255, 228, 230, 0.4);
         }
 
         .aesthetic-end {
-            font-family: 'Great Vibes', cursive;
-            font-size: 28px;
+            font-family: 'Tinos', 'Times New Roman', Times, serif;
+            font-size: 18px;
+            font-style: italic;
+            font-weight: 700;
             color: #fbcfe8;
             display: block;
             margin-top: 18px;
-            line-height: 1.3;
-            text-align: left;
-            text-shadow: 0 2px 10px rgba(251, 207, 232, 0.5);
+            line-height: 1.4;
+            text-align: right;
+            text-shadow: 0 2px 8px rgba(251, 207, 232, 0.5);
         }
 
         .error-msg {
@@ -243,7 +241,7 @@
             font-weight: 600;
         }
 
-        /* GALERI FOTO POLAROID GLASS */
+        /* BINGKAI & GALERI FOTO PRESISI DI TENGAH (TIDAK TERPOTONG) */
         .gallery {
             display: flex;
             flex-direction: column;
@@ -254,57 +252,82 @@
         .photo-card {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.4);
             border-radius: 18px;
-            padding: 14px;
+            padding: 12px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.25);
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .photo-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
         }
 
-        .photo-card img {
-            width: 65%;
-            height: 220px;
-            object-fit: cover;
+        /* WADAH BINGKAI FOTO PRESISI */
+        .img-frame {
+            width: 100%;
+            max-width: 320px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.25);
             border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 0 auto;
+        }
+
+        /* Foto pas di tengah & tidak terpotong */
+        .img-frame img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
             display: block;
+            margin: 0 auto;
         }
 
         .photo-card .quote {
-            font-family: 'Playfair Display', serif;
-            font-size: 14px;
+            font-family: 'Tinos', 'Times New Roman', Times, serif;
+            font-size: 15px;
             color: #fbcfe8;
             margin-top: 12px;
             font-style: italic;
             line-height: 1.5;
+            text-align: center;
         }
 
         .photo-card .sub-quote {
-            font-size: 11px;
+            font-size: 12px;
             color: rgba(255, 255, 255, 0.85);
             margin-top: 4px;
+            text-align: center;
         }
 
-        /* HALAMAN TERAKHIR & ANIMASI TULISAN BERGILIRAN */
+        /* HALAMAN TERAKHIR & ANIMASI */
         .final-message-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 180px;
+            min-height: 140px;
         }
 
         .animate-love-text {
-            font-family: 'Great Vibes', cursive;
-            font-size: 38px;
+            font-family: 'Tinos', 'Times New Roman', Times, serif;
+            font-size: 26px;
+            font-weight: bold;
             color: #fbcfe8;
             text-shadow: 0 0 15px rgba(251, 207, 232, 0.8), 0 0 25px rgba(255, 71, 87, 0.5);
             visibility: hidden;
-            line-height: 1.3;
+            line-height: 1.4;
             transition: opacity 0.8s ease-in-out;
             opacity: 1;
+            text-align: center;
         }
 
         .animate-love-text.fade-out {
@@ -312,13 +335,13 @@
         }
 
         .typed-cursor {
-            font-size: 32px;
+            font-size: 24px;
             color: white;
             opacity: 1;
             animation: blink 0.7s infinite;
         }
 
-        /* KEYFRAMES ANIMASI */
+        /* ANIMASI KEYFRAMES */
         @keyframes moveBg {
             0% { transform: scale(1) translate(0, 0); }
             50% { transform: scale(1.08) translate(-12px, -8px); }
@@ -340,7 +363,7 @@
 </head>
 <body>
 
-    <!-- BACKGROUND 3D BERGERAK -->
+    <!-- BACKGROUND -->
     <div class="bg-container"></div>
     <div class="bg-overlay"></div>
 
@@ -358,10 +381,10 @@
     <div id="sc1" class="screen">
         <div class="glass-card">
             <h3>Siapa Namamu? ✨</h3>
-            <p style="font-size: 12px; opacity: 0.85; margin-top: 5px;">Cantik, masukkan namamu untuk membuka pesan ini 🤭</p>
+            <p style="font-size: 12px; opacity: 0.85; margin-top: 5px;">Masukkan namamu untuk membuka pesan ini 🤭</p>
             
             <input type="text" id="nameInput" class="input-name" placeholder="Ketik nama di sini..." autocomplete="off">
-            <p id="errorTxt" class="error-msg">Isi nama kamu dulu yaa! 😊</p>
+            <p id="errorTxt" class="error-msg">Masukkan nama Oming untuk membuka yaa! 😊</p>
             
             <button class="btn-action" onclick="checkKeyword()">Buka Pesan 🔓</button>
         </div>
@@ -388,7 +411,7 @@
     <div id="sc2" class="screen hidden">
         <div class="glass-card">
             <div class="avatar-gif-box">
-                <img src="cute.gif" alt="Panda Cute">
+                <img src="cute.gif" alt="Cute Gif">
             </div>
 
             <div id="messageContent">
@@ -401,23 +424,27 @@
         </div>
     </div>
 
-    <!-- SCREEN 3: FOTO & KATA-KATA ROMANTIS -->
+    <!-- SCREEN 3: GALERI FOTO & BINGKAI PRESISI -->
     <div id="sc3" class="screen hidden">
         <div class="glass-card">
-            <h3 style="color: #ffe4e6;">Moment Terindah🥰</h3>
-            <p style="font-size: 12px; opacity: 0.85;">Setiap detik bersamamu adalah momen terindah dalam hidupku.</p>
+            <h3 style="color: #ffe4e6;">Momen Terindah 🥰</h3>
+            <p style="font-size: 12px; opacity: 0.85; margin-bottom: 10px;">Setiap detik bersamamu adalah kenangan yang sangat berharga.</p>
 
             <div class="gallery">
                 <!-- Foto 1 -->
                 <div class="photo-card">
-                    <img src="image1.jpg" alt="Momen Indah 1">
+                    <div class="img-frame">
+                        <img src="foto1.jpg" alt="Momen Indah 1">
+                    </div>
                     <p class="quote">"Di antara miliaran manusia di dunia, menemukanmu adalah takdir terbaikku."</p>
                     <p class="sub-quote">Terima kasih sudah memilih berjalan bersamaku ✨</p>
                 </div>
 
                 <!-- Foto 2 -->
                 <div class="photo-card">
-                    <img src="image2.jpg" alt="Momen Indah 2">
+                    <div class="img-frame">
+                        <img src="foto2.jpg" alt="Momen Indah 2">
+                    </div>
                     <p class="quote">"Senyummu adalah penawar dari segala lelahku, dan hadirmu adalah bahagiaku."</p>
                     <p class="sub-quote">Aku ingin terus merawat bahagia ini bersamamu, selamanya 💖</p>
                 </div>
@@ -428,18 +455,19 @@
         </div>
     </div>
 
-    <!-- SCREEN 4: HALAMAN TERAKHIR (ANIMASI TULISAN AESTHETIC BERGILIRAN) -->
+    <!-- SCREEN 4: HALAMAN TERAKHIR -->
     <div id="sc4" class="screen hidden">
         <div class="glass-card">
             <div class="avatar-gif-box">
-                <img src="image3.jpg" alt="Her image">
+                <!-- Foto 3 di halaman akhir juga diatur utuh -->
+                <img src="foto3.jpg" alt="Her image">
             </div>
             
             <div class="final-message-container">
                 <div id="loveText" class="animate-love-text"></div>
             </div>
 
-            <p style="font-size: 11px; opacity: 0.6; margin-top: 15px;">Semoga kamu suka kejutan kecil ini 🤭</p>
+            <p style="font-size: 11px; opacity: 0.7; margin-top: 15px;">Semoga kamu suka kejutan kecil ini 🤭❤️</p>
         </div>
     </div>
 
@@ -447,31 +475,31 @@
         const musik = document.getElementById('backSound');
         let namaPenerimaGlobal = "Oming";
 
-        // TEKS SURAT ROMANTIS
-        const isiBadanSurat = `.. I love you more than words can say ❤️`
+        // ISI TEKS SURAT SESUAI PERMINTAAN
+        const isiBadanSurat = "Sayang, semangat kerjanya yaa  Kalau hari ini terasa berat, ingat ada seseorang yang selalu menunggu kamu pulang dan selalu mendoakanmu. Jangan menyerah, kamu hebat dan kamu pasti bisa melewati semuanya. Aku sayang kamu, jaga diri baik-baik ya.";
 
-        const salamAkhir = 'Sayang, semangat kerjanya yaa Kalau hari ini terasa berat, ingat ada seseorang yang selalu menunggu kamu pulang dan selalu mendoakanmu. Jangan menyerah, kamu hebat dan kamu pasti bisa melewati semuanya. Aku sayang kamu, jaga diri baik-baik ya.lopyou oming🤍'
-          "Forever and always, you're my favorite person  🤍";
+        const salamAkhir = "lopyou oming 🤍";
 
-        // DAFTAR KALIMAT YANG AKAN MUNJUL BERGILIRAN DI HALAMAN TERAKHIR
+        // PESAN TAMPIL BERGILIRAN DI AKHIR
         const pesanBergiliran = [
-            "Semangat Sayanggg ",
+            "Semangatt Sayanggg ❤️",
             "I Love You Sayang 🤍"
         ];
 
-        // PROSES CEK NAMA
+        // PROSES VALDASI NAMA "OMING"
         function checkKeyword() {
             const inputVal = document.getElementById('nameInput').value.trim();
             const errorTxt = document.getElementById('errorTxt');
 
-            if (inputVal === "oming") {
-                errorTxt.innerText = "Isi nama kamu dulu yaa! 😊";
+            // Cek apabila nama mengandung 'oming' (tidak sensitif huruf besar/kecil)
+            if (inputVal === "" || !inputVal.toLowerCase().includes("oming")) {
+                errorTxt.innerText = "Masukkan nama Oming untuk membuka yaa! 😊";
                 errorTxt.style.display = "block";
                 return;
             }
 
             // Putar Musik
-            musik.play().catch(() => console.log("Musik diputar."));
+            musik.play().catch(() => console.log("Audio autoplay dicegah browser."));
 
             errorTxt.style.display = "none";
             namaPenerimaGlobal = inputVal.charAt(0).toUpperCase() + inputVal.slice(1);
@@ -518,16 +546,13 @@
             document.getElementById('sc3').classList.remove('hidden');
         }
 
-        // NAVIGASI KE HALAMAN TERAKHIR
         function goToLastPage() {
             document.getElementById('sc3').classList.add('hidden');
             document.getElementById('sc4').classList.remove('hidden');
             
-            // Memulai animasi bergiliran dari indeks ke-0
             playSequenceAnimation(0);
         }
 
-        // FUNGSI ANIMASI KETIK KALIMAT BERGILIRAN
         function playSequenceAnimation(msgIndex) {
             if (msgIndex >= pesanBergiliran.length) return;
 
@@ -538,7 +563,7 @@
 
             const teksSekarang = pesanBergiliran[msgIndex];
             let index = 0;
-            const kecepatanNgetik = 120; // Kecepatan ketik (milidetik)
+            const kecepatanNgetik = 100;
 
             function ketik() {
                 if (index < teksSekarang.length) {
@@ -547,20 +572,15 @@
                     index++;
                     setTimeout(ketik, kecepatanNgetik);
                 } else {
-                    // Selesai ngetik kalimat ini
                     loveTextEl.innerHTML = teksSekarang + '<span class="typed-cursor">|</span>';
 
-                    // Jika ini BUKAN kalimat terakhir, beri jeda lalu fade out & ganti ke kalimat berikutnya
                     if (msgIndex < pesanBergiliran.length - 1) {
                         setTimeout(() => {
-                            // Efek Fade Out halus
                             loveTextEl.classList.add('fade-out');
-                            
-                            // Setelah efek fade out selesai (0.8 detik), ketik kalimat berikutnya
                             setTimeout(() => {
                                 playSequenceAnimation(msgIndex + 1);
                             }, 800);
-                        }, 2200); // Durasi tampil kalimat pertama (2.2 detik) sebelum hilang
+                        }, 2200);
                     }
                 }
             }
@@ -570,3 +590,4 @@
     </script>
 </body>
 </html>
+dj
